@@ -1,0 +1,14 @@
+rootProject.name = 'DayToDay'
+include ':react-native-fs'
+project(':react-native-fs').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-fs/android')
+apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
+include ':app'
+
+include ':react-native-fs'
+project(':react-native-fs').projectDir = new File(settingsDir, '../node_modules/react-native-fs/android')
+
+// Disable tests from react-native-navigation
+// when running on device these tests will automatically run
+// We don't need to run tests for a library
+startParameter.excludedTaskNames += ':react-native-navigation:testReactNative63DebugUnitTest'
+startParameter.excludedTaskNames += ':react-native-navigation:testReactNative63ReleaseUnitTest'
